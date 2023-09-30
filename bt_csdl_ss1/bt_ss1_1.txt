@@ -1,0 +1,14 @@
+create database demo_bt_ss1;
+use demo_bt_ss1;
+
+create table class(
+	id int auto_increment primary key,
+    name_class varchar(100)
+);
+
+create table students(
+	id_student int primary key auto_increment ,
+    name_student varchar(100),
+    age_student int ,
+    country_student varchar(100)
+);

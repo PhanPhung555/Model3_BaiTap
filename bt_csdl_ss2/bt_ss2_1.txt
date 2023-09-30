@@ -1,0 +1,69 @@
+create database demo_bt_ss2;
+use demo_bt_ss2;
+
+create table bill(
+	number_bill int,
+    day_bill date,
+    primary key(number_bill)
+);
+
+create table supplies(
+	code_supplies varchar(20),
+    name_supplies varchar(200),
+    primary key(code_supplies)
+);
+
+create table detail_bill(
+	export_quantity int,
+    export_unit_price double,
+    number_bill int,
+    code_supplies varchar(20),
+    primary key(number_bill,code_supplies),
+    foreign key(number_bill) references bill(number_bill),
+    foreign key(code_supplies) references supplies(code_supplies) 
+);
+
+create table enter_coupon(
+	number_enter_coupon int,
+    day_enter date,
+    primary key(number_enter_coupon)
+);
+
+create table export_slip_details(
+    number_input int,
+	input_unit_price double,
+    number_enter_coupon int,
+    code_supplies varchar(20),
+    primary key(code_supplies,number_enter_coupon),
+    foreign key(code_supplies) references supplies(code_supplies),
+    foreign key(number_enter_coupon) references enter_coupon(number_enter_coupon)
+);
+
+create table the_oder(
+	number_oder int,
+    day_oder date,
+    primary key(number_oder)
+);
+
+create table provide_home(
+	code_provide_home varchar(20),
+    name_provide_home varchar(200),
+    address_provide_home varchar(200),
+    primary key(code_provide_home)
+);
+
+create table provide(
+	code_provide_home varchar(20),
+    number_oder int,
+    day_oder date,
+    foreign key(code_provide_home) references provide_home(code_provide_home),
+    foreign key(number_oder) references the_oder(number_oder)
+);
+
+create table phone_home_provide(
+	id_phone int auto_increment ,
+    code_provide_home varchar(20),
+    number_phone varchar(20),
+    primary key(id_phone),
+    foreign key(code_provide_home) references provide_home(code_provide_home)
+);
