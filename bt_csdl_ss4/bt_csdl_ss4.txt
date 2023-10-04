@@ -1,0 +1,15 @@
+SELECT * FROM quanlisinhvien.subjects;
+
+-- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
+select *
+ from subjects 
+ where Credit = (select max(Credit) from subjects) ;
+ 
+ -- Hiển thị các thông tin môn học có điểm thi lớn nhất.
+ select * from subjects inner join mark on subjects.Sub_Id = mark.Sub_Id where Mark = (select max(Mark) from mark);
+ 
+ -- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần
+ select student.student_id,student.studen_name, avg(mark.Mark) as average_grade
+ from student 
+ join mark on student.student_id = mark.student_id
+ group by student.student_id,student.studen_name order by average_grade asc;
