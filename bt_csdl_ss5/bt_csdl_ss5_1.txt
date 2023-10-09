@@ -1,0 +1,21 @@
+create database demo;
+use demo;
+
+create table Products (
+	id_product int auto_increment primary key,
+    productCode varchar(20),
+    productName varchar(100),
+    productPrice double,
+    productAmount int,
+    productDescription text,
+    productStatus bool
+);
+
+-- Chèn dữ liệu vào bảng Products
+INSERT INTO Products (productCode, productName, productPrice, productAmount, productDescription, productStatus)
+VALUES
+    ('P001', 'Máy tính xách tay', 999.99, 50, 'Máy tính xách tay màn hình 15 inch', 1),
+    ('P002', 'Điện thoại di động', 499.99, 100, 'Điện thoại smartphone chạy Android', 1),
+    ('P003', 'Tivi LED 4K', 799.99, 30, 'Tivi LED 4K 55 inch', 1),
+    ('P004', 'Bàn làm việc', 299.99, 20, 'Bàn làm việc gỗ công nghiệp', 1),
+    ('P005', 'Quạt trần', 149.99, 10, 'Quạt trần 5 cánh', 1);

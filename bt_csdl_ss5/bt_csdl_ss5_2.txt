@@ -1,0 +1,62 @@
+-- Index
+explain select * from products where productCode = "P003";
+
+create unique index product_productCode_idx on products (productCode);
+create index product_productNameOrPrice_idx on products(productName,productPrice);
+
+explain select * from products where productCode = "P003";
+
+-- View
+create view products_views as select productCode,productName, productPrice, productStatus from products;
+select * from products_views;
+update products_views set productName = "Iphone 15 proMax" where productCode = "P001";
+delete from products_views where productCode = "P003";
+
+--  store procedure
+	-- Lấy Ra
+DELIMITER //
+CREATE PROCEDURE GetAllProducts()
+BEGIN
+    SELECT * FROM Products;
+END //
+DELIMITER ;
+
+	-- Thêm Mới
+delimiter //
+create procedure create_product(
+in productCode varchar(20),
+in productName varchar(100),
+in productPrice double,
+in productAmount int,
+in productDescription text,
+in productStatus bool )
+begin
+	insert into Products (productCode, productName, productPrice, productAmount, productDescription, productStatus) 
+    value (productCode,productName,productPrice,productAmount,productDescription,productStatus);
+end //
+delimiter ;
+
+	-- Update
+delimiter //
+create procedure update_product_id(
+in id int,
+in productName varchar(100)
+)
+begin 
+update products set products.productName = productName where products.id_product = id;
+end //
+delimiter ;
+
+	-- Xóa
+delimiter //
+create procedure delete_product_id (in id int)
+begin
+	delete from products where products.id_product = id;
+end //
+delimiter ;
+
+call GetAllProducts();
+call create_product('P006', 'Quạt trần', 149.99, 10, 'Quạt trần 5 cánh', 1);
+call update_product_id(1,"Iphone14");
+call delete_product_id(1);
+
