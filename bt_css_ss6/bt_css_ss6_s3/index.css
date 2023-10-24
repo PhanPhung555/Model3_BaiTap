@@ -1,0 +1,42 @@
+html{
+    scroll-margin-top: 30px;
+}
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.table_of_contents{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: darkgrey;
+    margin: 0;
+    list-style-type: none;
+}
+.table_of_contents li{
+    padding: 20px 20px;
+ }
+.table_of_contents li a{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.table_of_contents li:hover {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+#main{
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+ h5{
+    padding-top: 100px;
+    text-align: center;
+    margin: 30px;
+    height: 100px;
+    background: darkgrey;
+}
