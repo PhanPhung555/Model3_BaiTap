@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.source-img{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #777;
+    position: relative;
+    background-color: #f0f2f5;
+}
+.source-img img{
+    position: absolute;
+    height: 80%;
+    padding: -20px;
+}
+.source-img p{
+    position: absolute;
+    bottom: -20px;
+    padding: 15px 20px;
+}
