@@ -1,0 +1,10 @@
+.mx-1 input {
+    border: 1px solid #3b5998;
+    padding: 5px 10px;
+    outline: none;
+    margin: 5px;
+}
+
+.mx-1 button{
+    margin-top: -5px;
+}
